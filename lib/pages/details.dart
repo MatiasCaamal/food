@@ -31,7 +31,15 @@ class _DetailsState extends State<Details> {
               height: MediaQuery.of(context).size.height / 2.5,
               fit: BoxFit.fill,
             ),
-            //Text("Mediterranean", style: AppWidget.semiBoldTextFeildStyle,)
+            SizedBox(height: 15.0 ,),
+            //Text("Mediterranean", style: AppWidget.semiBoldTextFeildStyle(),),
+            //Text("Chickpea Salad", style: AppWidget.boldTextFeildStyle(),),
+           /*  Row(children: [
+              Container(
+
+                child: Icon(Icons.remove, color: Colors.white,),
+              )
+            ],) */
           ],
         ),
       ),
