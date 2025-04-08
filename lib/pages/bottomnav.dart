@@ -35,7 +35,16 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(items: [
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 65,
+        backgroundColor: Colors.black,
+        animationDuration: Duration(milliseconds: 500),
+        onTap: (int index) {
+          setState(() {
+            currentTabIndex = index;
+          });
+        },
+        items: [
         Icon(
           Icons.home_outlined,
           color: Colors.white,
@@ -53,6 +62,7 @@ class _BottomNavState extends State<BottomNav> {
           color: Colors.white,
         )
       ]),
+      body: pages[currentTabIndex],
     );
   }
 }
