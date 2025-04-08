@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:fooddeliveryapp/widget/widget_support.dart';
 
 class Details extends StatefulWidget {
   const Details({super.key});
@@ -12,9 +13,25 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        margin: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black,)
+            GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: Colors.black,
+                )),
+            Image.asset(
+              "images/salad2.png",
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 2.5,
+              fit: BoxFit.fill,
+            ),
+            //Text("Mediterranean", style: AppWidget.semiBoldTextFeildStyle,)
           ],
         ),
       ),
