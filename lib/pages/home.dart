@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 20.0,
             ),
-            Text("Delicius Food", style: Appwidget.HeadlineTextFeildStyle()),
+            Text("Delicius Food", style: Appwidget.headlineTextFeildStyle()),
             Text("Discover and Get Great Food",
                 style: Appwidget.lightTextFeildStyle()),
             SizedBox(
@@ -147,15 +147,15 @@ class _HomeState extends State<Home> {
                           height: 120.0, width: 120.0, fit: BoxFit.cover),
                           SizedBox(width: 20.0,),
                           Column(children: [
-                            Container(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width/2,
                               child: Text("Mediterranean Chickpea Salad", style: Appwidget.semiBooTextFeildStyle(),)),
                               SizedBox(height: 5.0,),
-                               Container(
+                               SizedBox(
                               width: MediaQuery.of(context).size.width/2,
                               child: Text("Honey goot cheese", style: Appwidget.lightTextFeildStyle())),
                               SizedBox(height: 5.0,),
-                               Container(
+                               SizedBox(
                               width: MediaQuery.of(context).size.width/2,
                               child: Text("\$28", style: Appwidget.lightTextFeildStyle()))
                           ],)

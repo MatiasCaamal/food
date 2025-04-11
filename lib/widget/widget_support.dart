@@ -9,7 +9,7 @@ class Appwidget{
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Poppins');
   }
-  static TextStyle HeadlineTextFeildStyle(){
+  static TextStyle headlineTextFeildStyle(){
     return TextStyle(
                   color: Colors.black,
                   fontSize: 24.0,
