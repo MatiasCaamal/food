@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/pages/details.dart';
 import 'package:food/widget/widget_support.dart';
 
 class Home extends StatefulWidget {
@@ -58,35 +59,40 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.all(4),
-                    child: Material(
-                      elevation: 5.0,
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        padding: EdgeInsets.all(14),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              "images/salad2.png",
-                              height: 150,
-                              width: 150,
-                              fit: BoxFit.cover,
-                            ),
-                            Text("Veggie Taco Hash",
-                                style: Appwidget.semiBooTextFeildStyle()),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text("Fresh and healty",
-                                style: Appwidget.lightTextFeildStyle()),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text("\$25",
-                                style: Appwidget.semiBooTextFeildStyle()),
-                          ],
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Details()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(4),
+                      child: Material(
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          padding: EdgeInsets.all(14),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "images/salad2.png",
+                                height: 150,
+                                width: 150,
+                                fit: BoxFit.cover,
+                              ),
+                              Text("Veggie Taco Hash",
+                                  style: Appwidget.semiBoldTextFeildStyle()),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text("Fresh and healty",
+                                  style: Appwidget.lightTextFeildStyle()),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text("\$25",
+                                  style: Appwidget.semiBoldTextFeildStyle()),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -111,7 +117,7 @@ class _HomeState extends State<Home> {
                               fit: BoxFit.cover,
                             ),
                             Text("Mix Veg Salad",
-                                style: Appwidget.semiBooTextFeildStyle()),
+                                style: Appwidget.semiBoldTextFeildStyle()),
                             SizedBox(
                               height: 5.0,
                             ),
@@ -121,7 +127,7 @@ class _HomeState extends State<Home> {
                               height: 5.0,
                             ),
                             Text("\$28",
-                                style: Appwidget.semiBooTextFeildStyle()),
+                                style: Appwidget.semiBoldTextFeildStyle()),
                           ],
                         ),
                       ),
@@ -149,7 +155,7 @@ class _HomeState extends State<Home> {
                           Column(children: [
                             SizedBox(
                               width: MediaQuery.of(context).size.width/2,
-                              child: Text("Mediterranean Chickpea Salad", style: Appwidget.semiBooTextFeildStyle(),)),
+                              child: Text("Mediterranean Chickpea Salad", style: Appwidget.semiBoldTextFeildStyle(),)),
                               SizedBox(height: 5.0,),
                                SizedBox(
                               width: MediaQuery.of(context).size.width/2,
