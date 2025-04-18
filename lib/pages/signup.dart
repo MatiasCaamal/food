@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:food/pages/signup.dart';
+import 'package:food/pages/login.dart';
 import 'package:food/widget/widget_support.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LogInState extends State<LogIn> {
+class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,7 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20.0, right: 20.0),
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 2,
+                      height: MediaQuery.of(context).size.height / 1.9,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
@@ -69,10 +70,18 @@ class _LogInState extends State<LogIn> {
                             height: 30.0,
                           ),
                           Text(
-                            "Login",
+                            "Sign",
                             style: Appwidget.headlineTextFeildStyle(),
                           ),
-                           SizedBox(
+                            SizedBox(
+                            height: 30.0,
+                          ),
+                          TextField(
+                              decoration: InputDecoration(
+                                  hintText: 'Name',
+                                  hintStyle: Appwidget.semiBoldTextFeildStyle(),
+                                  prefixIcon: Icon(Icons.person_2_outlined))),
+                                  SizedBox(
                             height: 30.0,
                           ),
                           TextField(
@@ -83,20 +92,17 @@ class _LogInState extends State<LogIn> {
                           SizedBox(
                             height: 30.0,
                           ),
-                        
                           TextField(
                             obscureText: true,
                               decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: Appwidget.semiBoldTextFeildStyle(),
                                   prefixIcon: Icon(Icons.password_outlined))),
+                                   
                           SizedBox(
                             height: 20.0,
                           ),
-                          Container(
-                              alignment: Alignment.topRight,
-                              child: Text("Forgot password",
-                                  style: Appwidget.semiBoldTextFeildStyle())),
+          
                           SizedBox(height: 80.0),
                           Material(
                             elevation: 5.0,
@@ -107,7 +113,7 @@ class _LogInState extends State<LogIn> {
                                 decoration:
                                     BoxDecoration(color: Color(0xffff5722), borderRadius: BorderRadius.circular(20)),
                                 child: Center(
-                                    child: Text("Login",
+                                    child: Text("Sign Up",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18.0,
@@ -122,9 +128,9 @@ class _LogInState extends State<LogIn> {
                   SizedBox(height: 70.0,),
                                             GestureDetector(
                                               onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=> LogIn()));
                                               },
-                                              child: Text("Don't have a an acccount? Sign up", style: Appwidget.semiBoldTextFeildStyle(),))
+                                              child: Text("Already have an account? Login", style: Appwidget.semiBoldTextFeildStyle(),))
 
                 ],
               ),
@@ -135,3 +141,5 @@ class _LogInState extends State<LogIn> {
     );
   }
 }
+
+  
