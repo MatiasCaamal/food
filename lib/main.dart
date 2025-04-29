@@ -133,3 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// !Ahora se ejecuta desde la terminal
+
