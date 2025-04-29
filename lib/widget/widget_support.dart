@@ -9,7 +9,7 @@ class Appwidget{
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Poppins');
   }
-  static TextStyle HeadlineTextFeildStyle(){
+  static TextStyle headlineTextFeildStyle(){
     return TextStyle(
                   color: Colors.black,
                   fontSize: 24.0,
@@ -23,7 +23,7 @@ class Appwidget{
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins');
                   }
-    static TextStyle semiBooTextFeildStyle(){
+    static TextStyle semiBoldTextFeildStyle(){
     return TextStyle(
                   color: Colors.black54,
                   fontSize: 18.0,
