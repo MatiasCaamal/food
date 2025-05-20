@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food/pages/bottomnav.dart';
 import 'package:food/pages/login.dart';
+import 'package:food/pages/wallet.dart';
+import 'package:food/service/database.dart';
+import 'package:food/service/shared_pref.dart';
 import 'package:food/widget/widget_support.dart';
+import 'package:random_string/random_string.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -18,7 +22,7 @@ class _SignupState extends State<Signup> {
   TextEditingController passwordcontroller = new TextEditingController();
   TextEditingController mailcontroller = new TextEditingController();
 
-  final _formkey= GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
 
   registration() async {
     if (password != null) {
@@ -35,8 +39,29 @@ class _SignupState extends State<Signup> {
             ),
           ),
         );
+
+        String Id = randomAlphaNumeric(10);
+
+        Map<String, dynamic> addUserInfo = {
+          "Name": namecontroller.text,
+          "Email": mailcontroller.text,
+          "Wallet": "0",
+          "Id": Id,
+        };
+
+        await DatabaseMethods().addUserDetail(addUserInfo, Id);
+        await SharedPreferenceHelper().saveUserName(namecontroller.text);
+        await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+        await SharedPreferenceHelper().saveUserWallet('0');
+        await SharedPreferenceHelper().saveUserId(Id);
+
+
+
+
+
         // ignore: use_build_context_synchronously
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> BottomNav()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => BottomNav()));
       } on FirebaseException catch (e) {
         if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -46,11 +71,11 @@ class _SignupState extends State<Signup> {
           )));
         } else if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.orange,
+              backgroundColor: Colors.orange,
               content: Text(
-            "Account already exsists",
-            style: TextStyle(fontSize: 18.0),
-          )));
+                "Account already exsists",
+                style: TextStyle(fontSize: 18.0),
+              )));
         }
       }
     }
@@ -124,59 +149,62 @@ class _SignupState extends State<Signup> {
                               height: 30.0,
                             ),
                             TextFormField(
-                              controller: namecontroller,
-                              validator: (value) {
-                                if(value==null|| value.isEmpty){
-                                  return 'Please enter your E-mail'; 
-                                }
-                                return null;
-                              },
+                                controller: namecontroller,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your E-mail';
+                                  }
+                                  return null;
+                                },
                                 decoration: InputDecoration(
                                     hintText: 'Name',
-                                    hintStyle: Appwidget.semiBoldTextFeildStyle(),
+                                    hintStyle:
+                                        Appwidget.semiBoldTextFeildStyle(),
                                     prefixIcon: Icon(Icons.person_2_outlined))),
                             SizedBox(
                               height: 30.0,
                             ),
                             TextFormField(
-                              controller: mailcontroller,
-                              validator: (value) {
-                                if(value==null|| value.isEmpty){
-                                  return 'Please enter your Email';
-                                }
+                                controller: mailcontroller,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your Email';
+                                  }
                                   return null;
                                 },
                                 decoration: InputDecoration(
                                     hintText: 'Email',
-                                    hintStyle: Appwidget.semiBoldTextFeildStyle(),
+                                    hintStyle:
+                                        Appwidget.semiBoldTextFeildStyle(),
                                     prefixIcon: Icon(Icons.email_outlined))),
                             SizedBox(
                               height: 30.0,
                             ),
                             TextFormField(
-                              controller: passwordcontroller,
-                              validator: (value) {
-                                if(value==null|| value.isEmpty){
-                                  return 'Please enter your password';
-                                }
+                                controller: passwordcontroller,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your password';
+                                  }
                                   return null;
                                 },
                                 obscureText: true,
                                 decoration: InputDecoration(
                                     hintText: 'Password',
-                                    hintStyle: Appwidget.semiBoldTextFeildStyle(),
+                                    hintStyle:
+                                        Appwidget.semiBoldTextFeildStyle(),
                                     prefixIcon: Icon(Icons.password_outlined))),
                             SizedBox(
                               height: 20.0,
                             ),
                             SizedBox(height: 80.0),
                             GestureDetector(
-                              onTap: ()async{
-                                if(_formkey.currentState!.validate()){
+                              onTap: () async {
+                                if (_formkey.currentState!.validate()) {
                                   setState(() {
-                                    email=mailcontroller.text;
-                                    name=namecontroller.text;
-                                    password=passwordcontroller.text;
+                                    email = mailcontroller.text;
+                                    name = namecontroller.text;
+                                    password = passwordcontroller.text;
                                   });
                                 }
                                 registration();
@@ -189,7 +217,8 @@ class _SignupState extends State<Signup> {
                                     width: 200,
                                     decoration: BoxDecoration(
                                         color: Color(0xffff5722),
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Center(
                                         child: Text("Sign Up",
                                             style: TextStyle(
