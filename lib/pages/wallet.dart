@@ -284,7 +284,7 @@ class _WalletState extends State<Wallet> {
       };
 
       var response = await http.post(
-        Uri.parse('http://api.stripe.com/v1/payment_intents'),
+        Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
           'Authorization': 'Bearer $secretKey',
           'Content-Type': 'application/x-www-form-urlencoded'
