@@ -213,7 +213,7 @@ class _WalletState extends State<Wallet> {
 
   Future<void> makePayment(String amount) async {
     try {
-      paymentIntent = await createPaymentIntent(amount, 'INR');
+      paymentIntent = await createPaymentIntent(amount, 'MXN');
 
       await Stripe.instance
           .initPaymentSheet(
