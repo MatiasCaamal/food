@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:food/widget/widget_support.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddFood extends StatefulWidget {
   const AddFood({super.key});
@@ -16,7 +19,17 @@ class _AddFoodState extends State<AddFood> {
   TextEditingController pricecontroller = new TextEditingController();
   TextEditingController detailcontroller = new TextEditingController();
 
-  
+  final ImagePicker _picker = ImagePicker();
+  File? selectedImage;
+
+  Future getImage()async { 
+    var image = await _picker.pickImage(source: ImageSource.gallery);
+
+    selectedImage = File(image!.path);
+    setState(() {
+      
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +64,29 @@ class _AddFoodState extends State<AddFood> {
               SizedBox(
                 height: 20.0,
               ),
+              selectedImage == null? GestureDetector(
+                onTap: (){
+                  getImage();
+                },
+                child: Center(
+                  child: Material(
+                    elevation: 4.0,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 1.5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ):
               Center(
                 child: Material(
                   elevation: 4.0,
@@ -62,9 +98,12 @@ class _AddFoodState extends State<AddFood> {
                       border: Border.all(color: Colors.black, width: 1.5),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Icon(
-                      Icons.camera_alt_outlined,
-                      color: Colors.black,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.file(
+                        selectedImage! ,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
