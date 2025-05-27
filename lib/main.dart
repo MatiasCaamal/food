@@ -8,6 +8,7 @@ import 'package:food/pages/bottomnav.dart';
 import 'package:food/pages/home.dart';
 import 'package:food/pages/login.dart';
 import 'package:food/pages/onboard.dart';
+import 'package:food/pages/profile.dart';
 import 'package:food/pages/signup.dart';
 import 'package:food/widget/app_constant.dart';
 
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Onboard(),
     );
   }
 }
