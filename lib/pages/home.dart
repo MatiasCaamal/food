@@ -176,46 +176,48 @@ class _HomeState extends State<Home> {
           top: 50.0,
           left: 10.0,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Hello Shivam,", style: Appwidget.boldTextFeildStyle()),
-                Container(
-                  margin: EdgeInsets.only(right: 20.0),
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Icon(Icons.shopping_cart, color: Colors.white),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text("Delicius Food", style: Appwidget.headlineTextFeildStyle()),
-            Text("Discover and Get Great Food",
-                style: Appwidget.lightTextFeildStyle()),
-            SizedBox(
-              height: 20.0,
-            ),
-            Container(
-                margin: EdgeInsets.only(
-                  right: 20.0,
-                ),
-                child: showItem()),
-            SizedBox(
-              height: 30.0,
-            ),
-            Container(height: 270, child: allItems()),
-            SizedBox(
-              height: 30.0,
-            ),
-            allItemsVertically(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Hello Shivam,", style: Appwidget.boldTextFeildStyle()),
+                  Container(
+                    margin: EdgeInsets.only(right: 20.0),
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Icon(Icons.shopping_cart, color: Colors.white),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text("Delicius Food", style: Appwidget.headlineTextFeildStyle()),
+              Text("Discover and Get Great Food",
+                  style: Appwidget.lightTextFeildStyle()),
+              SizedBox(
+                height: 20.0,
+              ),
+              Container(
+                  margin: EdgeInsets.only(
+                    right: 20.0,
+                  ),
+                  child: showItem()),
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(height: 270, child: allItems()),
+              SizedBox(
+                height: 30.0,
+              ),
+              allItemsVertically(),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:food/admin/admin_login.dart';
 import 'package:food/service/auth.dart';
 import 'package:food/service/shared_pref.dart';
 import 'package:image_picker/image_picker.dart';
@@ -236,39 +237,47 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 20.0,
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(10),
-                      elevation: 2.0,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 10.0),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.description,
-                              color: Colors.black,
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Terms and Conditions",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            )
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AdminLogin()),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(10),
+                        elevation: 2.0,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15.0, horizontal: 10.0),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.description,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 20.0,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Admin Login",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -277,7 +286,7 @@ class _ProfileState extends State<Profile> {
                     height: 20.0,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       AuthMethods().deleteuser();
                     },
                     child: Container(
@@ -322,7 +331,7 @@ class _ProfileState extends State<Profile> {
                     height: 20.0,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       AuthMethods().SignOut();
                     },
                     child: Container(
