@@ -126,12 +126,13 @@ class _AdminLoginState extends State<AdminLogin> {
                                 height: 40.0,
                               ),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   LoginAdmin();
                                 },
                                 child: Container(
                                   padding: EdgeInsets.symmetric(vertical: 12.0),
-                                  margin: EdgeInsets.symmetric(horizontal: 20.0),
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
                                       color: Colors.black,
