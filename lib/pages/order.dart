@@ -24,6 +24,18 @@ class _OrderState extends State<Order> {
     });
   }
 
+  Future<void> clearCart() async {
+    final cartSnapshot = await FirebaseFirestore.instance
+        .collection("users") // Colección principal
+        .doc(id) // ID del usuario
+        .collection("Cart") // Subcolección con los productos
+        .get();
+
+    for (DocumentSnapshot doc in cartSnapshot.docs) {
+      await doc.reference.delete(); // Elimina cada documento del carrito
+    }
+  }
+
   getthesharedpref() async {
     id = await SharedPreferenceHelper().getUserId();
     wallet = await SharedPreferenceHelper().getUserWallet();
@@ -161,10 +173,23 @@ class _OrderState extends State<Order> {
             GestureDetector(
               onTap: () async {
                 int amount = int.parse(wallet!) - amount2;
+
                 await DatabaseMethods()
                     .UpdateUserwallet(id!, amount.toString());
                 await SharedPreferenceHelper()
                     .saveUserWallet(amount.toString());
+
+                await clearCart(); // 🔥 Limpia el carrito
+
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Compra completada. Carrito vaciado."),
+                ));
+
+                total = 0;
+                amount2 = 0;
+                foodStream =
+                    await DatabaseMethods().getFoodCart(id!); // recarga vacío
+                setState(() {});
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
